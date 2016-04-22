@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+# Sync output
+STDOUT.sync = true
+
+# Kill exiting error
+Signal.trap('SIGINT') { exit 130 }
+
+# TODO: Next...
+puts 'Hello world!'
