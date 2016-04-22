@@ -21,6 +21,12 @@ Gem::Specification.new do |spec|
   spec.executables   = 'trackly'
   spec.require_paths = ['lib']
 
+  # Core deps
+  spec.add_dependency 'mercenary', '~> 0.3.6'
+  spec.add_dependency 'tty-prompt', '~> 0.5.0'
+  spec.add_dependency 'github_api', '~> 0.13.1'
+
+  # Dev. deps
   spec.add_development_dependency 'bundler', '~> 1.11'
   spec.add_development_dependency 'rake', '~> 11.1'
   spec.add_development_dependency 'rspec', '~> 3.4'

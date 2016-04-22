@@ -6,5 +6,26 @@ STDOUT.sync = true
 # Kill exiting error
 Signal.trap('SIGINT') { exit 130 }
 
-# TODO: Next...
-puts 'Hello world!'
+require 'mercenary'
+require 'trackly'
+
+# Trackly program
+Mercenary.program(:trackly) do |program|
+  program.version Trackly::VERSION
+  program.description 'A small tool to get usage stats of the SaaS products.'
+  program.syntax 'trackly [OPTIONS]'
+
+  # program.logger(Logger::DEBUG)
+
+  # Compute command
+  program.command(:compute) do |command|
+    command.syntax 'trackly compute [OPTIONS]'
+    command.description 'Get usage of the SaaS products.'
+
+    command.action do |_, options|
+      Trackly::Commands::Compute.process(options)
+    end
+  end
+
+  program.default_command :compute
+end
